@@ -1,22 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [style, setStyle] = useState('red')
+  const [input, setInput] = useState('red')
+  console.log(input);
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Use the input fields to change the styles below
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <p
+          style={{ color: style }}
         >
-          Learn React
-        </a>
+          Learn React XSS
+        </p>
+        <input value={input} onChange={(e) => setInput(e.target.value)} type='text' />
+        <button onClick={() => setStyle(input)}>Enter</button>
       </header>
     </div>
   );
